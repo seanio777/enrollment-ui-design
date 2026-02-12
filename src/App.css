@@ -1,173 +1,184 @@
 :root {
   --primary-blue: #4d5fff;
   --dark-blue: #003366;
-  --light-blue: #f0f7ff;
-  --border-gray: #ced4da;
-  --input-bg: #333333;
+  --light-bg: #f4f7f9;
+  --border-gray: #e1e4e8;
+  --input-bg: #2d2d2d;
   --error-red: #ff4d4d;
   --success-green: #2ecc71;
+  --accent-purple: #6c5ce7;
+}
+
+/* 1. Perfect Centering & Global Reset */
+html, body {
+  height: 100%;
+  margin: 0;
 }
 
 body {
-  font-family: 'Segoe UI', sans-serif;
-  background-color: var(--light-blue);
+  font-family: 'Inter', 'Segoe UI', sans-serif;
+  /* Soft gradient for a more "stylistic" look */
+  background: radial-gradient(circle at top right, #ffffff, #d7e1ec);
+  display: flex;
+  align-items: center; 
+  justify-content: center;
   padding: 20px;
+  box-sizing: border-box;
 }
 
 .container {
-  max-width: 1000px;
-  margin: 0 auto;
-  background: white;
+  width: 100%;
+  max-width: 900px;
+  background: #ffffff;
   padding: 40px;
-  border-radius: 12px;
-  box-shadow: 0 4px 20px rgba(0,0,0,0.1);
+  border-radius: 20px;
+  box-shadow: 0 20px 60px rgba(0, 0, 0, 0.1);
+  /* Entrance animation */
+  animation: slideUp 0.6s ease-out;
+  overflow-y: auto;
+  max-height: 95vh;
 }
 
+@keyframes slideUp {
+  from { opacity: 0; transform: translateY(20px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+
+/* 2. Header Styling */
 header {
   text-align: center;
+  margin-bottom: 40px;
+  border-bottom: 2px solid var(--border-gray);
+  padding-bottom: 20px;
+}
+
+header h2 {
   color: var(--dark-blue);
-  border-bottom: 3px solid var(--primary-blue);
-  margin-bottom: 30px;
+  font-size: clamp(1.4rem, 4vw, 1.8rem);
+  margin: 0;
 }
 
-fieldset {
-  border: 1px solid var(--border-gray);
-  border-radius: 8px;
-  padding: 20px;
-  margin-bottom: 25px;
+header p {
+  color: var(--primary-blue);
+  font-weight: 600;
+  letter-spacing: 1px;
+  margin-top: 5px;
 }
 
-legend {
-  font-weight: bold;
-  color: var(--dark-blue);
-  padding: 0 10px;
+/* 3. Responsive Grids */
+.grid-name { 
+  display: grid; 
+  grid-template-columns: repeat(4, 1fr); 
+  gap: 15px; 
 }
 
-/* Base Grids */
-.grid-name { display: grid; grid-template-columns: repeat(4, 1fr); gap: 15px; }
-.grid-3-col { display: grid; grid-template-columns: repeat(3, 1fr); gap: 15px; margin-bottom: 15px; }
+.grid-3-col { 
+  display: grid; 
+  grid-template-columns: repeat(3, 1fr); 
+  gap: 20px; 
+  margin-bottom: 15px; 
+}
 
-/* Detailed Address Grid */
 .grid-address-detailed {
   display: grid;
   grid-template-columns: repeat(4, 1fr);
-  gap: 10px;
+  gap: 12px;
 }
 
-.full-width { grid-column: 1 / -1; margin-bottom: 5px; }
+.full-width { grid-column: 1 / -1; }
 
-/* ACADEMIC HISTORY SECTION STYLING */
-.academic-group {
-  margin-bottom: 25px;
+/* 4. Input & Fieldset Styling */
+fieldset {
+  border: 1px solid var(--border-gray);
+  border-radius: 12px;
+  padding: 25px;
+  margin-bottom: 30px;
+  background-color: #fafbfc;
 }
 
-.academic-row {
-  display: grid;
-  grid-template-columns: 3fr 1fr;
-  gap: 10px;
-  margin-bottom: 8px;
-}
-
-.academic-row-shs {
-  display: grid;
-  grid-template-columns: 2fr 1fr 1fr;
-  gap: 10px;
-  margin-bottom: 8px;
-}
-
-.full-width-input {
-  width: 100%;
-}
-
-/* ASTERISK STYLING */
-label {
-  display: block;
-  font-weight: 600;
-  font-size: 0.85rem;
-  margin-bottom: 5px;
+legend {
+  font-weight: 700;
   color: var(--dark-blue);
-}
-
-.required::after {
-  content: " *";
-  color: var(--error-red);
-  font-size: 1rem;
-}
-
-.main-label {
+  padding: 0 10px;
   font-size: 0.9rem;
-  margin-bottom: 8px;
-  display: block;
+  text-transform: uppercase;
 }
 
-/* Input Styling */
 input:not([type="radio"]), select {
   width: 100%;
-  padding: 10px;
+  padding: 12px;
   background-color: var(--input-bg);
   color: white;
-  border: 1px solid #444;
-  border-radius: 4px;
-  box-sizing: border-box;
-  transition: border 0.3s ease;
+  border: 2px solid transparent;
+  border-radius: 8px;
+  font-size: 16px; /* Prevents auto-zoom on mobile */
+  transition: all 0.3s ease;
 }
 
-input::placeholder {
-  color: #888;
-  font-style: italic;
+input:focus, select:focus {
+  outline: none;
+  border-color: var(--primary-blue);
+  background-color: #1a1a1a;
 }
 
-/* VALIDATION MARKERS (Left Border) */
-input:required:invalid, select:required:invalid {
-  border-left: 5px solid var(--error-red);
-}
+/* Validation Markers */
+input:required:invalid, select:required:invalid { border-left: 5px solid var(--error-red); }
+input:required:valid, select:required:valid { border-left: 5px solid var(--success-green); }
 
-input:required:valid, select:required:valid {
-  border-left: 5px solid var(--success-green);
-}
-
-/* Radios */
-.control-group { display: flex; flex-direction: column; }
-.radio-box {
-  display: flex;
-  flex-direction: column;
-  gap: 10px;
-  padding: 12px;
-  border: 1px solid var(--border-gray);
-  border-radius: 6px;
-  background-color: #fdfdfd;
-  height: 100%;
-}
-
-.radio-box:has(input:invalid) { border-left: 5px solid var(--error-red); }
-.radio-box:has(input:valid) { border-left: 5px solid var(--success-green); }
-
-.radio-label {
-  display: flex;
-  align-items: center;
-  gap: 10px;
-  font-weight: normal;
-  color: #333;
-  cursor: pointer;
-}
-
-.radio-label input[type="radio"] {
-  width: 18px;
-  height: 18px;
-  accent-color: var(--primary-blue);
-}
-
+/* 5. Submit Button */
 .submit-btn {
   width: 100%;
-  padding: 15px;
-  background-color: var(--primary-blue);
+  padding: 18px;
+  background: linear-gradient(135deg, var(--primary-blue), var(--accent-purple));
   color: white;
   border: none;
-  border-radius: 6px;
-  font-weight: bold;
+  border-radius: 10px;
+  font-weight: 700;
   font-size: 1.1rem;
   cursor: pointer;
-  margin-top: 20px;
+  transition: transform 0.2s, box-shadow 0.2s;
+  box-shadow: 0 10px 20px rgba(77, 95, 255, 0.2);
 }
 
-.submit-btn:hover { background-color: var(--dark-blue); }
+.submit-btn:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 15px 25px rgba(77, 95, 255, 0.3);
+}
+
+/* 6. MEDIA QUERIES (The "Responsive" Magic) */
+
+/* For Tablets (Portrait) */
+@media (max-width: 768px) {
+  .container {
+    padding: 25px;
+    margin: 10px;
+  }
+
+  .grid-name {
+    grid-template-columns: repeat(2, 1fr);
+  }
+
+  .grid-3-col {
+    grid-template-columns: 1fr;
+    gap: 15px;
+  }
+}
+
+/* For Mobile Phones */
+@media (max-width: 480px) {
+  body {
+    align-items: flex-start; /* Allows scrolling naturally from the top */
+  }
+
+  .grid-name, .grid-address-detailed {
+    grid-template-columns: 1fr;
+  }
+
+  fieldset {
+    padding: 15px;
+  }
+
+  .academic-row, .academic-row-shs {
+    grid-template-columns: 1fr;
+  }
+}
