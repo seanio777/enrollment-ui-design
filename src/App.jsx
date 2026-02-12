@@ -32,9 +32,9 @@ function App() {
           <legend>1. Personal Information</legend>
           <div className="grid-name">
             <div><label>First Name</label><input type="text" required /></div>
-            <div><label>Middle Name (Optional)</label><input type="text" /></div>
+            <div><label>Middle Name</label><input type="text" /></div>
             <div><label>Last Name</label><input type="text" required /></div>
-            <div><label>Suffix (Optional)</label><input type="text" placeholder="e.g. Jr." /></div>
+            <div><label>Suffix</label><input type="text" placeholder="e.g. Jr." /></div>
           </div>
           <div className="grid-3-col">
             <div><label>Date of Birth</label><input type="date" required /></div>
@@ -61,7 +61,7 @@ function App() {
           <div className="grid-3-col">
             <div><label>Email</label><input type="email" required /></div>
             <div><label>Mobile</label><input type="tel" required /></div>
-            <div><label>Landline (Optional)</label><input type="tel" /></div>
+            <div><label>Landline</label><input type="tel" /></div>
           </div>
           <div className="grid-address">
             <div className="full-width"><label>Address</label><input type="text" required /></div>
