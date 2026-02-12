@@ -5,10 +5,11 @@ function App() {
   const [academicLevel, setAcademicLevel] = useState("Undergraduate");
   const [selectedCollege, setSelectedCollege] = useState("");
   const [mobile, setMobile] = useState("");
+  const [landline, setLandline] = useState("");
 
-  // Helper to format mobile: +63 XXX-XXX-XXXX
+  // Mobile Mask: +63 XXX-XXX-XXXX
   const handleMobileChange = (e) => {
-    let value = e.target.value.replace(/\D/g, ''); // Remove non-digits
+    let value = e.target.value.replace(/\D/g, ''); 
     if (value.startsWith('63')) value = value.substring(2);
     
     let formatted = "+63 ";
@@ -17,6 +18,26 @@ function App() {
     if (value.length >= 7) formatted += '-' + value.substring(6, 10);
     
     setMobile(formatted.trim());
+  };
+
+  // Landline Mask: (02) 8XXX-XXXX
+  const handleLandlineChange = (e) => {
+    let value = e.target.value.replace(/\D/g, '');
+    let formatted = "";
+    
+    if (value.length > 0) {
+      const areaCode = value.substring(0, 2);
+      const mainNumber = value.substring(2);
+      
+      formatted = `(${areaCode})`;
+      if (mainNumber.length > 0) {
+        formatted += ` ${mainNumber.substring(0, 4)}`;
+      }
+      if (mainNumber.length >= 5) {
+        formatted += `-${mainNumber.substring(4, 8)}`;
+      }
+    }
+    setLandline(formatted);
   };
 
   const nationalities = ["Filipino", "Afghan", "Albanian", "Algerian", "American", "Andorran", "Angolan", "Antiguans", "Argentinean", "Armenian", "Australian", "Austrian", "Azerbaijani", "Bahamian", "Bahraini", "Bangladeshi", "Barbadian", "Barbudans", "Batswana", "Belarusian", "Belgian", "Belizean", "Beninese", "Bhutanese", "Bolivian", "Bosnian", "Brazilian", "British", "Bruneian", "Bulgarian", "Burkinabe", "Burmese", "Burundian", "Cambodian", "Cameroonian", "Canadian", "Cape Verdean", "Central African", "Chadian", "Chilean", "Chinese", "Colombian", "Comoran", "Congolese", "Costa Rican", "Croatian", "Cuban", "Cypriot", "Czech", "Danish", "Djibouti", "Dominican", "Dutch", "East Timorese", "Ecuadorean", "Egyptian", "Emirian", "Equatorial Guinean", "Eritrean", "Estonian", "Ethiopian", "Fijian", "Finnish", "French", "Gabonese", "Gambian", "Georgian", "German", "Ghanaian", "Greek", "Grenadian", "Guatemalan", "Guinea-Bissauan", "Guinean", "Guyanese", "Haitian", "Herzegovinian", "Honduran", "Hungarian", "I-Kiribati", "Icelander", "Indian", "Indonesian", "Iranian", "Iraqi", "Irish", "Israeli", "Italian", "Ivorian", "Jamaican", "Japanese", "Jordanian", "Kazakhstani", "Kenyan", "Kittian and Nevisian", "Kuwaiti", "Kyrgyz", "Laotian", "Latvian", "Lebanese", "Liberian", "Libyan", "Liechtensteiner", "Lithuanian", "Luxembourger", "Macedonian", "Malagasy", "Malawian", "Malaysian", "Maldivian", "Malian", "Maltese", "Marshallese", "Mauritanian", "Mauritian", "Mexican", "Micronesian", "Moldovan", "Monacan", "Mongolian", "Moroccan", "Mosotho", "Motswana", "Mozambican", "Namibian", "Nauruan", "Nepalese", "New Zealander", "Ni-Vanuatu", "Nicaraguan", "Nigerian", "Nigerien", "North Korean", "Northern Irish", "Norwegian", "Omani", "Pakistani", "Palauan", "Panamanian", "Papua New Guinean", "Paraguayan", "Peruvian", "Polish", "Portuguese", "Qatari", "Romanian", "Russian", "Rwandan", "Saint Lucian", "Salvadoran", "Samoan", "San Marinese", "Sao Tomean", "Saudi", "Scottish", "Senegalese", "Serbian", "Seychellois", "Sierra Leonean", "Singaporean", "Slovakian", "Slovenian", "Solomon Islander", "Somali", "South African", "South Korean", "Spanish", "Sri Lankan", "Sudanese", "Surinamer", "Swazi", "Swedish", "Swiss", "Syrian", "Taiwanese", "Tajik", "Tanzanian", "Thai", "Togolese", "Tongan", "Trinidadian or Tobagonian", "Tunisian", "Turkish", "Tuvaluan", "Ugandan", "Ukrainian", "Uruguayan", "Uzbekistani", "Venezuelan", "Vietnamese", "Welsh", "Yemenite", "Zambian", "Zimbabwean"];
@@ -73,7 +94,15 @@ function App() {
         <fieldset>
           <legend>2. Contact Details</legend>
           <div className="grid-3-col">
-            <div><label className="required">Email Address</label><input type="email" placeholder="name@example.com" required /></div>
+            <div>
+              <label className="required">Email Address</label>
+              <input 
+                type="email" 
+                placeholder="name@example.com" 
+                pattern="[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,4}$"
+                required 
+              />
+            </div>
             <div>
               <label className="required">Mobile Number</label>
               <input 
@@ -87,7 +116,13 @@ function App() {
             </div>
             <div>
               <label>Landline</label>
-              <input type="tel" placeholder="(02) 8XXX-XXXX" pattern="^\(?\d{2,3}\)? ?\d{3,4}-?\d{4}$" />
+              <input 
+                type="tel" 
+                value={landline}
+                onChange={handleLandlineChange}
+                placeholder="(02) 8XXX-XXXX" 
+                pattern="\(\d{2}\) \d{4}-\d{4}" 
+              />
             </div>
           </div>
           <div className="grid-address-detailed">
