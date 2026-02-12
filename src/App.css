@@ -1,118 +1,103 @@
 :root {
-  --primary-blue: #007bff;
+  --primary-blue: #4d5fff;
   --dark-blue: #003366;
   --light-blue: #f0f7ff;
   --border-gray: #ced4da;
-  --error-red: #dc3545;
-  --success-green: #28a745;
+  --input-bg: #333333;
 }
 
 body {
-  font-family: 'Segoe UI', Arial, sans-serif;
+  font-family: 'Segoe UI', sans-serif;
   background-color: var(--light-blue);
   padding: 20px;
-  margin: 0;
 }
 
 .container {
   max-width: 1000px;
   margin: 0 auto;
   background: white;
-  padding: 35px;
-  border-radius: 8px;
-  box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
+  padding: 40px;
+  border-radius: 12px;
+  box-shadow: 0 4px 20px rgba(0,0,0,0.1);
 }
 
 header {
   text-align: center;
-  border-bottom: 4px solid var(--primary-blue);
-  margin-bottom: 30px;
-  padding-bottom: 10px;
   color: var(--dark-blue);
+  border-bottom: 3px solid var(--primary-blue);
+  margin-bottom: 30px;
 }
 
 fieldset {
   border: 1px solid var(--border-gray);
-  border-radius: 6px;
+  border-radius: 8px;
   padding: 20px;
-  margin-bottom: 30px;
+  margin-bottom: 25px;
 }
 
 legend {
   font-weight: bold;
-  font-size: 1.1rem;
   color: var(--dark-blue);
   padding: 0 10px;
 }
 
-h3 {
-  font-size: 1rem;
-  color: var(--primary-blue);
-  border-left: 4px solid var(--primary-blue);
-  padding-left: 10px;
-  margin: 15px 0;
-}
+.grid-name { display: grid; grid-template-columns: repeat(4, 1fr); gap: 15px; }
+.grid-3-col { display: grid; grid-template-columns: repeat(3, 1fr); gap: 15px; }
+.grid-address { display: grid; grid-template-columns: 2fr 1fr 1fr 1fr; gap: 10px; }
 
 label {
   display: block;
   font-weight: 600;
-  margin-top: 15px;
+  font-size: 0.85rem;
   margin-bottom: 5px;
-  font-size: 0.9rem;
 }
 
-input, select {
+input[type="text"], input[type="email"], input[type="tel"], input[type="number"], input[type="date"], select {
   width: 100%;
   padding: 10px;
-  border: 1px solid var(--border-gray);
+  background-color: var(--input-bg);
+  color: white;
+  border: 1px solid #444;
   border-radius: 4px;
   box-sizing: border-box;
 }
 
-/* Validation Highlights */
-input:focus, select:focus { outline: 2px solid var(--primary-blue); }
-input:required:invalid { border-left: 5px solid var(--error-red); }
-input:required:valid { border-left: 5px solid var(--success-green); }
-
-/* Grids */
-.grid-name { display: grid; grid-template-columns: repeat(4, 1fr); gap: 15px; }
-.grid-3-col { display: grid; grid-template-columns: repeat(3, 1fr); gap: 15px; }
-.grid-address { display: grid; grid-template-columns: 2fr 1fr 1fr; gap: 15px; }
-.grid-academic { display: grid; grid-template-columns: 3fr 1fr; gap: 15px; }
-.grid-academic-shs { display: grid; grid-template-columns: 2fr 1fr 1fr; gap: 15px; }
-.full-width { grid-column: 1 / -1; }
-
-/* Radio Button Fix */
-.radio-container { display: flex; flex-direction: column; }
-.radio-group {
+/* Radio alignment fix */
+.radio-box {
   display: flex;
-  gap: 12px;
-  padding: 10px;
+  flex-direction: column;
+  gap: 10px;
+  padding: 15px;
   border: 1px solid var(--border-gray);
-  border-radius: 4px;
-  background: #fdfdfd;
+  border-radius: 6px;
+  background-color: #fdfdfd;
 }
-.radio-group label {
-  margin: 0 !important;
+
+.radio-label {
   display: flex;
   align-items: center;
-  gap: 6px;
-  font-size: 0.85rem;
+  gap: 10px;
+  font-weight: normal;
   color: #333;
+  cursor: pointer;
 }
-.radio-group input[type="radio"] { width: auto; accent-color: var(--primary-blue); }
 
-.dropdown-group { margin-top: 10px; }
+.radio-label input[type="radio"] {
+  width: 18px;
+  height: 18px;
+  accent-color: var(--primary-blue);
+}
 
-button[type="submit"] {
+.submit-btn {
+  width: 100%;
+  padding: 15px;
   background-color: var(--primary-blue);
   color: white;
-  padding: 15px;
   border: none;
-  border-radius: 5px;
+  border-radius: 6px;
   font-weight: bold;
-  cursor: pointer;
-  width: 100%;
   font-size: 1.1rem;
-  margin-top: 20px;
+  cursor: pointer;
 }
+
+.submit-btn:hover { background-color: var(--dark-blue); }
