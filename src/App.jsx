@@ -79,6 +79,7 @@ function App() {
                 <option value="">Select</option>
                 <option value="Male">Male</option>
                 <option value="Female">Female</option>
+                <option value="Non-binary">Non-binary</option>
               </select>
             </div>
             <div className="input-group">
