@@ -18,7 +18,7 @@ function App() {
         <p>Student Enrollment Portal</p>
       </header>
 
-      <form onSubmit={(e) => { e.preventDefault(); alert("Registration Submitted!"); }}>
+      <form onSubmit={(e) => { e.preventDefault(); alert("Registration Submitted Successfully!"); }}>
         
         {/* Section 1: Personal Information */}
         <fieldset>
@@ -65,82 +65,81 @@ function App() {
               </select>
             </div>
           </div>
+          <div>
+            <label>Religion</label>
+            <input type="text" placeholder="Religion" />
+          </div>
         </fieldset>
 
-        {/* Section 2: Contact Details Section */}
+        {/* Section 2: Contact Details */}
         <fieldset>
           <legend>2. Contact Details Section</legend>
           <div className="grid-3-col">
             <div>
-              <label htmlFor="email">Email Address</label>
-              <input type="email" id="email" required placeholder="example@email.com" /> [cite: 47, 124]
+              <label>Email Address</label>
+              <input type="email" required placeholder="example@email.com" />
             </div>
             <div>
-              <label htmlFor="mobile">Mobile Number</label>
-              <input type="tel" id="mobile" required placeholder="09XXXXXXXXX" /> [cite: 48, 125]
+              <label>Mobile Number</label>
+              <input type="tel" required placeholder="09XXXXXXXXX" />
             </div>
             <div>
-              <label htmlFor="landline">Landline</label>
-              <input type="tel" id="landline" placeholder="8XXX-XXXX" /> [cite: 49, 126]
+              <label>Landline</label>
+              <input type="tel" placeholder="8XXX-XXXX" />
             </div>
           </div>
-
           <div className="grid-address">
             <div className="full-width">
               <label>Street Address</label>
-              <input type="text" required placeholder="House No., Street, Subdivision" /> [cite: 50, 127]
+              <input type="text" required placeholder="House No., Street, Subdivision" />
             </div>
             <div>
               <label>Barangay</label>
-              <input type="text" required /> [cite: 50, 127]
+              <input type="text" required placeholder="Barangay" />
             </div>
             <div>
               <label>City</label>
-              <input type="text" required /> [cite: 50, 127]
+              <input type="text" required placeholder="City" />
             </div>
             <div>
               <label>Province</label>
-              <input type="text" required /> [cite: 50, 127]
+              <input type="text" required placeholder="Province" />
             </div>
             <div>
               <label>Zip Code</label>
-              <input type="text" required /> [cite: 50, 127]
+              <input type="text" required placeholder="Zip Code" />
             </div>
           </div>
         </fieldset>
 
-        {/* Section 3: Academic History Section */}
+        {/* Section 3: Academic History */}
         <fieldset>
           <legend>3. Academic History Section</legend>
-          
-          {/* Grade School */}
           <div className="academic-subgroup">
             <h3>Grade School</h3>
             <div className="grid-academic">
-              <input type="text" required placeholder="Grade School Name" /> [cite: 52, 129]
-              <input type="number" min="1900" max="2026" required placeholder="Year" /> [cite: 53, 130]
-              <input type="text" className="full-width" required placeholder="School Address" /> [cite: 55, 129]
+              <input type="text" required placeholder="Grade School Name" />
+              <input type="number" min="1900" max="2026" required placeholder="Year Graduated" />
+              <input type="text" className="full-width" required placeholder="School Address" />
             </div>
           </div>
 
-          {/* Junior High School */}
           <div className="academic-subgroup">
             <h3>Junior High School</h3>
             <div className="grid-academic">
-              <input type="text" required placeholder="Junior High School Name" /> [cite: 56, 129]
-              <input type="number" min="1900" max="2026" required placeholder="Year" /> [cite: 57, 130]
-              <input type="text" className="full-width" required placeholder="School Address" /> [cite: 59, 129]
+              <input type="text" required placeholder="Junior High School Name" />
+              <input type="number" min="1900" max="2026" required placeholder="Year Graduated" />
+              <input type="text" className="full-width" required placeholder="School Address" />
             </div>
           </div>
 
-          {/* Senior High School */}
           <div className="academic-subgroup">
             <h3>Senior High School</h3>
             <div className="grid-academic-shs">
-              <input type="text" required placeholder="Senior High School Name" /> [cite: 60, 129]
-              <input type="number" min="1900" max="2026" required placeholder="Year" /> [cite: 61, 130]
-              <input type="number" step="0.01" required placeholder="GWA (e.g. 1.25)" /> [cite: 62, 131]
-              <input type="text" className="full-width" required placeholder="School Address" /> [cite: 63, 129]
+              <input type="text" required placeholder="Senior High School Name" />
+              <input type="number" min="1900" max="2026" required placeholder="Year Graduated" />
+              <input type="number" step="0.01" required placeholder="Grade Average (e.g. 1.25)" />
+              <input type="text" className="full-width" required placeholder="School Address" />
             </div>
           </div>
         </fieldset>
@@ -155,11 +154,7 @@ function App() {
           </div>
 
           <label>College Department</label>
-          <select 
-            value={selectedCollege} 
-            onChange={(e) => setSelectedCollege(e.target.value)} 
-            required
-          >
+          <select value={selectedCollege} onChange={(e) => setSelectedCollege(e.target.value)} required>
             <option value="">-- Select College --</option>
             {Object.keys(programs).map(c => <option key={c} value={c}>{c}</option>)}
           </select>
