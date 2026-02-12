@@ -43,13 +43,34 @@ legend {
   padding: 0 10px;
 }
 
-/* Grids */
+/* Base Grids */
 .grid-name { display: grid; grid-template-columns: repeat(4, 1fr); gap: 15px; }
 .grid-3-col { display: grid; grid-template-columns: repeat(3, 1fr); gap: 15px; margin-bottom: 15px; }
 .grid-address { display: grid; grid-template-columns: 2fr 1fr 1fr 1fr; gap: 10px; }
-.academic-grid { display: grid; grid-template-columns: 3fr 1fr; gap: 10px; margin-bottom: 10px; }
-.academic-grid-shs { display: grid; grid-template-columns: 2fr 1fr 1fr; gap: 10px; margin-bottom: 15px; }
 .full-width { grid-column: 1 / -1; }
+
+/* ACADEMIC HISTORY SECTION STYLING */
+.academic-group {
+  margin-bottom: 25px;
+}
+
+.academic-row {
+  display: grid;
+  grid-template-columns: 3fr 1fr;
+  gap: 10px;
+  margin-bottom: 8px;
+}
+
+.academic-row-shs {
+  display: grid;
+  grid-template-columns: 2fr 1fr 1fr;
+  gap: 10px;
+  margin-bottom: 8px;
+}
+
+.full-width-input {
+  width: 100%;
+}
 
 /* ASTERISK STYLING */
 label {
@@ -106,13 +127,8 @@ input:required:valid, select:required:valid {
   height: 100%;
 }
 
-/* Highlight radio group box if required but missing selection */
-.radio-box:has(input:invalid) {
-  border-left: 5px solid var(--error-red);
-}
-.radio-box:has(input:valid) {
-  border-left: 5px solid var(--success-green);
-}
+.radio-box:has(input:invalid) { border-left: 5px solid var(--error-red); }
+.radio-box:has(input:valid) { border-left: 5px solid var(--success-green); }
 
 .radio-label {
   display: flex;
