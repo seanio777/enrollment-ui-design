@@ -1,10 +1,10 @@
-/* 1. Global Variables & Reset */
+/* 1. Global Variables & Base Styles */
 :root {
-  --primary-blue: #007bff;   /* Main Brand Blue [cite: 141] */
+  --primary-blue: #007bff;   /* Main Brand Blue  */
   --dark-blue: #003366;      /* Professional Navy for Headers */
   --light-blue: #f0f7ff;     /* Background Tint */
   --border-gray: #ced4da;
-  --error-red: #dc3545;      /* For Required Field Reminders */
+  --error-red: #dc3545;      /* For Required Field Highlights */
   --success-green: #28a745;
 }
 
@@ -17,7 +17,7 @@ body {
   margin: 0;
 }
 
-/* 2. Container & Layout */
+/* 2. Container & Header [cite: 110, 151] */
 .container {
   max-width: 1000px;
   margin: 0 auto;
@@ -35,7 +35,7 @@ header {
   color: var(--dark-blue);
 }
 
-/* 3. Section Styling (Fieldsets) */
+/* 3. Logical Sections (Fieldsets) [cite: 113, 114] */
 fieldset {
   border: 1px solid var(--border-gray);
   border-radius: 6px;
@@ -58,7 +58,7 @@ h3 {
   margin-top: 20px;
 }
 
-/* 4. Form Controls */
+/* 4. Form Controls & Labels [cite: 115, 137] */
 label {
   display: block;
   font-weight: 600;
@@ -72,30 +72,29 @@ input, select {
   padding: 10px;
   border: 1px solid var(--border-gray);
   border-radius: 4px;
-  box-sizing: border-box; /* Ensures inputs fit in grids [cite: 140] */
+  box-sizing: border-box; 
   transition: all 0.3s ease;
 }
 
-/* Visual Feedback & Validation [cite: 141, 151] */
+/* Visual Feedback: Focus and Validation  */
 input:focus, select:focus {
-  outline: 2px solid var(--primary-blue);
+  outline: 2px solid var(--primary-blue); /*  */
   border-color: var(--primary-blue);
 }
 
-/* Reminder: Red indicator for required fields that are empty */
+/* Validation Reminder: Highlight required fields [cite: 25] */
 input:required:invalid {
   border-left: 5px solid var(--error-red);
 }
 
-/* Green indicator for validly filled required fields */
 input:required:valid {
   border-left: 5px solid var(--success-green);
 }
 
-/* 5. The Grid System [cite: 140] */
+/* 5. Grid Systems (Avoids single-column layout)  */
 .grid-name {
   display: grid;
-  grid-template-columns: repeat(4, 1fr); /* First, Middle, Last, Suffix [cite: 41] */
+  grid-template-columns: repeat(4, 1fr); /* First, Middle, Last, Suffix [cite: 140] */
   gap: 15px;
 }
 
@@ -107,27 +106,27 @@ input:required:valid {
 
 .grid-address {
   display: grid;
-  grid-template-columns: 2fr 1fr 1fr; /* Street gets more space [cite: 50] */
+  grid-template-columns: 2fr 1fr 1fr;
   gap: 15px;
 }
 
 .grid-academic {
   display: grid;
-  grid-template-columns: 3fr 1fr; /* Name and Year [cite: 130] */
+  grid-template-columns: 3fr 1fr;
   gap: 15px;
 }
 
 .grid-academic-shs {
   display: grid;
-  grid-template-columns: 2fr 1fr 1fr; /* Name, Year, GWA [cite: 62] */
+  grid-template-columns: 2fr 1fr 1fr; /* SHS includes GWA [cite: 62] */
   gap: 15px;
 }
 
 .full-width {
-  grid-column: 1 / -1; /* Spans across all columns */
+  grid-column: 1 / -1;
 }
 
-/* 6. Radio Button Styling */
+/* 6. Radio Button Alignment [cite: 134] */
 .radio-group {
   display: flex;
   gap: 20px;
@@ -137,7 +136,6 @@ input:required:valid {
 
 .radio-group input[type="radio"] {
   width: auto;
-  margin-right: 5px;
 }
 
 /* 7. Submit Button [cite: 151] */
@@ -159,7 +157,7 @@ button[type="submit"]:hover {
   background-color: var(--dark-blue);
 }
 
-/* 8. Responsiveness (Mobile View) [cite: 142] */
+/* 8. Responsiveness [cite: 142] */
 @media (max-width: 768px) {
   .grid-name, .grid-3-col, .grid-address, .grid-academic, .grid-academic-shs {
     grid-template-columns: 1fr; /* Shifts to 1 column on mobile [cite: 142] */
