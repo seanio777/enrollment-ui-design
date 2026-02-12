@@ -1,10 +1,10 @@
 /* 1. Brand Variables & Blue Palette */
 :root {
-  --primary-blue: #007bff;   /* Required focus color [cite: 141] */
-  --dark-blue: #003366;      /* Professional Navy for headers [cite: 151] */
-  --light-blue: #f0f7ff;     /* Background for neatness */
+  --primary-blue: #007bff;
+  --dark-blue: #003366;
+  --light-blue: #f0f7ff;
   --border-gray: #ced4da;
-  --error-red: #dc3545;      /* For "Required" field visual feedback [cite: 25] */
+  --error-red: #dc3545;
   --success-green: #28a745;
 }
 
@@ -32,7 +32,7 @@ header {
   color: var(--dark-blue);
 }
 
-/* 2. Grouping Related Boxes [cite: 113] */
+/* 2. Form Structure */
 fieldset {
   border: 1px solid var(--border-gray);
   border-radius: 6px;
@@ -43,26 +43,54 @@ fieldset {
 legend {
   font-weight: bold;
   font-size: 1.1rem;
-  color: var(--dark-blue); /* Visual hierarchy [cite: 151] */
+  color: var(--dark-blue);
   padding: 0 10px;
 }
 
-/* 3. Section Grids [cite: 140] */
-/* Names: First, Middle, Last, Suffix in 4 columns */
+h3 {
+  font-size: 1rem;
+  color: var(--primary-blue);
+  border-left: 4px solid var(--primary-blue);
+  padding-left: 10px;
+  margin: 15px 0 10px 0;
+}
+
+/* 3. Grid Systems (Satisfies "No Single Column" Rule) */
 .grid-name {
   display: grid;
   grid-template-columns: repeat(4, 1fr);
   gap: 15px;
 }
 
-/* 3 Columns for DOB, Gender, Nationality */
 .grid-3-col {
   display: grid;
   grid-template-columns: repeat(3, 1fr);
   gap: 15px;
 }
 
-/* 4. Form Controls & Visual Feedback [cite: 141] */
+.grid-address {
+  display: grid;
+  grid-template-columns: 2fr 1fr 1fr;
+  gap: 15px;
+}
+
+.grid-academic {
+  display: grid;
+  grid-template-columns: 3fr 1fr;
+  gap: 15px;
+}
+
+.grid-academic-shs {
+  display: grid;
+  grid-template-columns: 2fr 1fr 1fr;
+  gap: 15px;
+}
+
+.full-width {
+  grid-column: 1 / -1;
+}
+
+/* 4. Controls & Visual Feedback */
 label {
   display: block;
   font-weight: 600;
@@ -76,17 +104,14 @@ input, select {
   padding: 10px;
   border: 1px solid var(--border-gray);
   border-radius: 4px;
-  box-sizing: border-box; /* Critical for grid alignment [cite: 24] */
-  transition: border-color 0.3s;
+  box-sizing: border-box;
 }
 
-/* Highlight active box [cite: 141] */
 input:focus, select:focus {
   outline: 2px solid var(--primary-blue);
   border-color: var(--primary-blue);
 }
 
-/* Front-end validation rules for "required" boxes [cite: 25] */
 input:required:invalid {
   border-left: 5px solid var(--error-red);
 }
@@ -95,7 +120,18 @@ input:required:valid {
   border-left: 5px solid var(--success-green);
 }
 
-/* 5. Submit Button [cite: 151] */
+/* 5. Radio Buttons & Submit */
+.radio-group {
+  display: flex;
+  gap: 20px;
+  align-items: center;
+  margin: 15px 0;
+}
+
+.radio-group input[type="radio"] {
+  width: auto;
+}
+
 button[type="submit"] {
   background-color: var(--primary-blue);
   color: white;
@@ -109,13 +145,12 @@ button[type="submit"] {
   margin-top: 20px;
 }
 
-button[type="submit"]:hover {
+button:hover {
   background-color: var(--dark-blue);
 }
 
-/* 6. Mobile Responsiveness [cite: 142] */
 @media (max-width: 768px) {
-  .grid-name, .grid-3-col {
-    grid-template-columns: 1fr; /* Shift to 1 column on mobile [cite: 142] */
+  .grid-name, .grid-3-col, .grid-address, .grid-academic, .grid-academic-shs {
+    grid-template-columns: 1fr;
   }
 }
