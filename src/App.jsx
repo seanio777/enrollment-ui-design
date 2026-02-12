@@ -32,9 +32,9 @@ function App() {
           <legend>1. Personal Information</legend>
           <div className="grid-name">
             <div><label>First Name</label><input type="text" required /></div>
-            <div><label>Middle Name</label><input type="text" /></div>
+            <div><label>Middle Name (Optional)</label><input type="text" /></div>
             <div><label>Last Name</label><input type="text" required /></div>
-            <div><label>Suffix</label><input type="text" placeholder="e.g. Jr." /></div>
+            <div><label>Suffix (Optional)</label><input type="text" placeholder="e.g. Jr." /></div>
           </div>
           <div className="grid-3-col">
             <div><label>Date of Birth</label><input type="date" required /></div>
@@ -49,6 +49,7 @@ function App() {
             <div>
               <label>Nationality</label>
               <select required>
+                <option value="">Select</option>
                 {nationalities.map(n => <option key={n} value={n}>{n}</option>)}
               </select>
             </div>
@@ -60,7 +61,7 @@ function App() {
           <div className="grid-3-col">
             <div><label>Email</label><input type="email" required /></div>
             <div><label>Mobile</label><input type="tel" required /></div>
-            <div><label>Landline</label><input type="tel" /></div>
+            <div><label>Landline (Optional)</label><input type="tel" /></div>
           </div>
           <div className="grid-address">
             <div className="full-width"><label>Address</label><input type="text" required /></div>
@@ -92,7 +93,7 @@ function App() {
               <label className="main-label">Academic Level</label>
               <div className="radio-box">
                 <label className="radio-label">
-                  <input type="radio" name="level" value="Undergraduate" checked={academicLevel === "Undergraduate"} onChange={() => {setAcademicLevel("Undergraduate"); setSelectedCollege("");}} /> Undergraduate
+                  <input type="radio" name="level" value="Undergraduate" checked={academicLevel === "Undergraduate"} onChange={() => {setAcademicLevel("Undergraduate"); setSelectedCollege("");}} required /> Undergraduate
                 </label>
                 <label className="radio-label">
                   <input type="radio" name="level" value="Graduate" checked={academicLevel === "Graduate"} onChange={() => {setAcademicLevel("Graduate"); setSelectedCollege("");}} /> Graduate
@@ -103,17 +104,17 @@ function App() {
             <div className="control-group">
               <label className="main-label">Semester</label>
               <div className="radio-box">
-                <label className="radio-label"><input type="radio" name="sem" required /> 1st</label>
-                <label className="radio-label"><input type="radio" name="sem" /> 2nd</label>
-                <label className="radio-label"><input type="radio" name="sem" /> Summer</label>
+                <label className="radio-label"><input type="radio" name="sem" value="1st" required /> 1st</label>
+                <label className="radio-label"><input type="radio" name="sem" value="2nd" /> 2nd</label>
+                <label className="radio-label"><input type="radio" name="sem" value="Summer" /> Summer</label>
               </div>
             </div>
 
             <div className="control-group">
               <label className="main-label">Campus</label>
               <div className="radio-box">
-                <label className="radio-label"><input type="radio" name="campus" required /> Manila</label>
-                <label className="radio-label"><input type="radio" name="campus" /> QC</label>
+                <label className="radio-label"><input type="radio" name="campus" value="Manila" required /> Manila</label>
+                <label className="radio-label"><input type="radio" name="campus" value="QC" /> QC</label>
               </div>
             </div>
           </div>
