@@ -1,89 +1,167 @@
+/* 1. Global Variables & Reset */
 :root {
-  --primary-blue: #007bff;
-  --dark-blue: #003366;
-  --light-blue: #f0f7ff;
+  --primary-blue: #007bff;   /* Main Brand Blue [cite: 141] */
+  --dark-blue: #003366;      /* Professional Navy for Headers */
+  --light-blue: #f0f7ff;     /* Background Tint */
   --border-gray: #ced4da;
-  --error-red: #dc3545;
+  --error-red: #dc3545;      /* For Required Field Reminders */
+  --success-green: #28a745;
 }
 
 body {
-  font-family: Arial, sans-serif;
+  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
   background-color: var(--light-blue);
+  color: #333;
+  line-height: 1.6;
   padding: 20px;
+  margin: 0;
 }
 
+/* 2. Container & Layout */
 .container {
-  max-width: 900px;
-  margin: auto;
-  background: white;
-  padding: 25px;
+  max-width: 1000px;
+  margin: 0 auto;
+  background: #ffffff;
+  padding: 40px;
   border-radius: 8px;
-  box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+  box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
 }
 
 header {
   text-align: center;
+  border-bottom: 4px solid var(--primary-blue);
+  margin-bottom: 30px;
+  padding-bottom: 10px;
   color: var(--dark-blue);
-  border-bottom: 3px solid var(--primary-blue);
-  margin-bottom: 20px;
 }
 
+/* 3. Section Styling (Fieldsets) */
 fieldset {
   border: 1px solid var(--border-gray);
-  margin-bottom: 20px;
-  padding: 15px;
-  border-radius: 5px;
+  border-radius: 6px;
+  padding: 20px;
+  margin-bottom: 30px;
 }
 
 legend {
   font-weight: bold;
+  font-size: 1.2rem;
   color: var(--dark-blue);
+  padding: 0 10px;
 }
 
+h3 {
+  font-size: 1rem;
+  color: var(--primary-blue);
+  border-left: 4px solid var(--primary-blue);
+  padding-left: 10px;
+  margin-top: 20px;
+}
+
+/* 4. Form Controls */
 label {
   display: block;
-  margin: 10px 0 5px;
+  font-weight: 600;
+  margin-bottom: 5px;
+  margin-top: 15px;
   font-size: 0.9rem;
 }
 
-/* Grid Layouts for scannability */
+input, select {
+  width: 100%;
+  padding: 10px;
+  border: 1px solid var(--border-gray);
+  border-radius: 4px;
+  box-sizing: border-box; /* Ensures inputs fit in grids [cite: 140] */
+  transition: all 0.3s ease;
+}
+
+/* Visual Feedback & Validation [cite: 141, 151] */
+input:focus, select:focus {
+  outline: 2px solid var(--primary-blue);
+  border-color: var(--primary-blue);
+}
+
+/* Reminder: Red indicator for required fields that are empty */
+input:required:invalid {
+  border-left: 5px solid var(--error-red);
+}
+
+/* Green indicator for validly filled required fields */
+input:required:valid {
+  border-left: 5px solid var(--success-green);
+}
+
+/* 5. The Grid System [cite: 140] */
 .grid-name {
   display: grid;
-  grid-template-columns: repeat(4, 1fr);
-  gap: 10px;
+  grid-template-columns: repeat(4, 1fr); /* First, Middle, Last, Suffix [cite: 41] */
+  gap: 15px;
 }
 
 .grid-3-col {
   display: grid;
   grid-template-columns: repeat(3, 1fr);
-  gap: 10px;
+  gap: 15px;
 }
 
-/* Required field reminder logic */
-input:required:invalid {
-  border-left: 5px solid var(--error-red);
+.grid-address {
+  display: grid;
+  grid-template-columns: 2fr 1fr 1fr; /* Street gets more space [cite: 50] */
+  gap: 15px;
 }
 
-input:focus, select:focus {
-  outline: 2px solid var(--primary-blue);
+.grid-academic {
+  display: grid;
+  grid-template-columns: 3fr 1fr; /* Name and Year [cite: 130] */
+  gap: 15px;
 }
 
-button {
-  width: 100%;
-  padding: 15px;
-  background: var(--primary-blue);
+.grid-academic-shs {
+  display: grid;
+  grid-template-columns: 2fr 1fr 1fr; /* Name, Year, GWA [cite: 62] */
+  gap: 15px;
+}
+
+.full-width {
+  grid-column: 1 / -1; /* Spans across all columns */
+}
+
+/* 6. Radio Button Styling */
+.radio-group {
+  display: flex;
+  gap: 20px;
+  align-items: center;
+  margin: 15px 0;
+}
+
+.radio-group input[type="radio"] {
+  width: auto;
+  margin-right: 5px;
+}
+
+/* 7. Submit Button [cite: 151] */
+button[type="submit"] {
+  background-color: var(--primary-blue);
   color: white;
+  padding: 15px 30px;
   border: none;
   border-radius: 5px;
+  font-size: 1.1rem;
   font-weight: bold;
   cursor: pointer;
+  width: 100%;
+  margin-top: 10px;
+  transition: background 0.3s;
 }
 
-button:hover {
-  background: var(--dark-blue);
+button[type="submit"]:hover {
+  background-color: var(--dark-blue);
 }
 
-/* Mobile Responsive */
-@media (max-width: 600px) {
-  .grid-name, .grid-3-col { grid-template-columns: 1fr; }
+/* 8. Responsiveness (Mobile View) [cite: 142] */
+@media (max-width: 768px) {
+  .grid-name, .grid-3-col, .grid-address, .grid-academic, .grid-academic-shs {
+    grid-template-columns: 1fr; /* Shifts to 1 column on mobile [cite: 142] */
+  }
 }
