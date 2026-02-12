@@ -73,16 +73,32 @@ function App() {
 
         <fieldset>
           <legend>3. Academic History</legend>
-          <label className="required">Grade School</label>
-          <div className="academic-grid">
-            <input type="text" placeholder="School Name" required />
-            <input type="number" placeholder="Year Graduated" required />
+          <div className="academic-group">
+            <label className="required">Grade School</label>
+            <div className="academic-row">
+              <input type="text" placeholder="School Name" required />
+              <input type="number" placeholder="Year Graduated" min="1900" max="2026" required />
+            </div>
+            <input type="text" placeholder="Grade School Address" className="full-width-input" required />
           </div>
-          <label className="required">Senior High School</label>
-          <div className="academic-grid-shs">
-            <input type="text" placeholder="School Name" required />
-            <input type="number" placeholder="Year Graduated" required />
-            <input type="number" step="0.01" placeholder="GWA" required />
+
+          <div className="academic-group">
+            <label className="required">Junior High School</label>
+            <div className="academic-row">
+              <input type="text" placeholder="School Name" required />
+              <input type="number" placeholder="Year Graduated" min="1900" max="2026" required />
+            </div>
+            <input type="text" placeholder="Junior High School Address" className="full-width-input" required />
+          </div>
+
+          <div className="academic-group">
+            <label className="required">Senior High School</label>
+            <div className="academic-row-shs">
+              <input type="text" placeholder="School Name" required />
+              <input type="number" placeholder="Year Graduated" min="1900" max="2026" required />
+              <input type="number" step="0.01" placeholder="Grade Average" required />
+            </div>
+            <input type="text" placeholder="Senior High School Address" className="full-width-input" required />
           </div>
         </fieldset>
 
