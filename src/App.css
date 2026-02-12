@@ -46,8 +46,15 @@ legend {
 /* Base Grids */
 .grid-name { display: grid; grid-template-columns: repeat(4, 1fr); gap: 15px; }
 .grid-3-col { display: grid; grid-template-columns: repeat(3, 1fr); gap: 15px; margin-bottom: 15px; }
-.grid-address { display: grid; grid-template-columns: 2fr 1fr 1fr 1fr; gap: 10px; }
-.full-width { grid-column: 1 / -1; }
+
+/* Detailed Address Grid */
+.grid-address-detailed {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 10px;
+}
+
+.full-width { grid-column: 1 / -1; margin-bottom: 5px; }
 
 /* ACADEMIC HISTORY SECTION STYLING */
 .academic-group {
@@ -103,6 +110,11 @@ input:not([type="radio"]), select {
   border-radius: 4px;
   box-sizing: border-box;
   transition: border 0.3s ease;
+}
+
+input::placeholder {
+  color: #888;
+  font-style: italic;
 }
 
 /* VALIDATION MARKERS (Left Border) */
