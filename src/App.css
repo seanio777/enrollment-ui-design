@@ -4,6 +4,8 @@
   --light-blue: #f0f7ff;
   --border-gray: #ced4da;
   --input-bg: #333333;
+  --error-red: #ff4d4d;
+  --success-green: #2ecc71;
 }
 
 body {
@@ -49,6 +51,7 @@ legend {
 .academic-grid-shs { display: grid; grid-template-columns: 2fr 1fr 1fr; gap: 10px; margin-bottom: 15px; }
 .full-width { grid-column: 1 / -1; }
 
+/* ASTERISK STYLING */
 label {
   display: block;
   font-weight: 600;
@@ -57,14 +60,19 @@ label {
   color: var(--dark-blue);
 }
 
-/* Ensure labels inside Section 4 are visible */
+.required::after {
+  content: " *";
+  color: var(--error-red);
+  font-size: 1rem;
+}
+
 .main-label {
   font-size: 0.9rem;
   margin-bottom: 8px;
-  color: var(--dark-blue);
   display: block;
 }
 
+/* Input Styling */
 input:not([type="radio"]), select {
   width: 100%;
   padding: 10px;
@@ -73,14 +81,20 @@ input:not([type="radio"]), select {
   border: 1px solid #444;
   border-radius: 4px;
   box-sizing: border-box;
+  transition: border 0.3s ease;
 }
 
-/* Radio alignment fix */
-.control-group {
-  display: flex;
-  flex-direction: column;
+/* VALIDATION MARKERS (Left Border) */
+input:required:invalid, select:required:invalid {
+  border-left: 5px solid var(--error-red);
 }
 
+input:required:valid, select:required:valid {
+  border-left: 5px solid var(--success-green);
+}
+
+/* Radios */
+.control-group { display: flex; flex-direction: column; }
 .radio-box {
   display: flex;
   flex-direction: column;
@@ -89,7 +103,15 @@ input:not([type="radio"]), select {
   border: 1px solid var(--border-gray);
   border-radius: 6px;
   background-color: #fdfdfd;
-  height: 100%; /* Ensures all 3 boxes are same height */
+  height: 100%;
+}
+
+/* Highlight radio group box if required but missing selection */
+.radio-box:has(input:invalid) {
+  border-left: 5px solid var(--error-red);
+}
+.radio-box:has(input:valid) {
+  border-left: 5px solid var(--success-green);
 }
 
 .radio-label {
@@ -99,7 +121,6 @@ input:not([type="radio"]), select {
   font-weight: normal;
   color: #333;
   cursor: pointer;
-  margin-bottom: 0;
 }
 
 .radio-label input[type="radio"] {
@@ -118,6 +139,7 @@ input:not([type="radio"]), select {
   font-weight: bold;
   font-size: 1.1rem;
   cursor: pointer;
+  margin-top: 20px;
 }
 
 .submit-btn:hover { background-color: var(--dark-blue); }
