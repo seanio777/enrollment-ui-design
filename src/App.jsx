@@ -142,21 +142,36 @@ function App() {
         {/* Section 4: Enrollment Choices */}
         <fieldset>
           <legend>4. Enrollment Choices</legend>
-          <div className="radio-group">
-            <label>Campus:</label>
-            <input type="radio" name="campus" value="Manila" required /> Manila
-            <input type="radio" name="campus" value="QC" required /> Quezon City
+          
+          <div className="radio-container">
+            <label className="section-subtitle">Select Campus:</label>
+            <div className="radio-group">
+              <label className="radio-item">
+                <input type="radio" name="campus" value="Manila" required /> 
+                <span>Manila</span>
+              </label>
+              <label className="radio-item">
+                <input type="radio" name="campus" value="QC" required /> 
+                <span>Quezon City</span>
+              </label>
+            </div>
           </div>
-          <label>College Department</label>
-          <select value={selectedCollege} onChange={(e) => setSelectedCollege(e.target.value)} required>
-            <option value="">-- Select College --</option>
-            {Object.keys(programs).map(c => <option key={c} value={c}>{c}</option>)}
-          </select>
-          <label>Degree Program</label>
-          <select required disabled={!selectedCollege}>
-            <option value="">-- Select Program --</option>
-            {selectedCollege && programs[selectedCollege].map(p => <option key={p} value={p}>{p}</option>)}
-          </select>
+
+          <div className="dropdown-group">
+            <label htmlFor="coll">College Department</label>
+            <select id="coll" value={selectedCollege} onChange={(e) => setSelectedCollege(e.target.value)} required>
+              <option value="">-- Select College --</option>
+              {Object.keys(programs).map(c => <option key={c} value={c}>{c}</option>)}
+            </select>
+          </div>
+
+          <div className="dropdown-group">
+            <label htmlFor="prog">Degree Program</label>
+            <select id="prog" required disabled={!selectedCollege}>
+              <option value="">-- Select Program --</option>
+              {selectedCollege && programs[selectedCollege].map(p => <option key={p} value={p}>{p}</option>)}
+            </select>
+          </div>
         </fieldset>
 
         <button type="submit">Submit Registration</button>
