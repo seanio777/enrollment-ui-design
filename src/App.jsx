@@ -67,6 +67,48 @@ function App() {
           </div>
         </fieldset>
 
+        {/* Section 2: Contact Details Section */}
+        <fieldset>
+          <legend>2. Contact Details Section</legend>
+          <div className="grid-3-col">
+            <div>
+              <label htmlFor="email">Email Address</label>
+              <input type="email" id="email" required placeholder="example@email.com" /> [cite: 47, 124]
+            </div>
+            <div>
+              <label htmlFor="mobile">Mobile Number</label>
+              <input type="tel" id="mobile" required placeholder="09XXXXXXXXX" /> [cite: 48, 125]
+            </div>
+            <div>
+              <label htmlFor="landline">Landline</label>
+              <input type="tel" id="landline" placeholder="8XXX-XXXX" /> [cite: 49, 126]
+            </div>
+          </div>
+
+          <div className="grid-address">
+            <div className="full-width">
+              <label>Street Address</label>
+              <input type="text" required placeholder="House No., Street, Subdivision" /> [cite: 50, 127]
+            </div>
+            <div>
+              <label>Barangay</label>
+              <input type="text" required /> [cite: 50, 127]
+            </div>
+            <div>
+              <label>City</label>
+              <input type="text" required /> [cite: 50, 127]
+            </div>
+            <div>
+              <label>Province</label>
+              <input type="text" required /> [cite: 50, 127]
+            </div>
+            <div>
+              <label>Zip Code</label>
+              <input type="text" required /> [cite: 50, 127]
+            </div>
+          </div>
+        </fieldset>
+
         {/* Section 4: Enrollment Choices */}
         <fieldset>
           <legend>4. Enrollment Choices</legend>
