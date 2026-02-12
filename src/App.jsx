@@ -109,6 +109,42 @@ function App() {
           </div>
         </fieldset>
 
+        {/* Section 3: Academic History Section */}
+        <fieldset>
+          <legend>3. Academic History Section</legend>
+          
+          {/* Grade School */}
+          <div className="academic-subgroup">
+            <h3>Grade School</h3>
+            <div className="grid-academic">
+              <input type="text" required placeholder="Grade School Name" /> [cite: 52, 129]
+              <input type="number" min="1900" max="2026" required placeholder="Year" /> [cite: 53, 130]
+              <input type="text" className="full-width" required placeholder="School Address" /> [cite: 55, 129]
+            </div>
+          </div>
+
+          {/* Junior High School */}
+          <div className="academic-subgroup">
+            <h3>Junior High School</h3>
+            <div className="grid-academic">
+              <input type="text" required placeholder="Junior High School Name" /> [cite: 56, 129]
+              <input type="number" min="1900" max="2026" required placeholder="Year" /> [cite: 57, 130]
+              <input type="text" className="full-width" required placeholder="School Address" /> [cite: 59, 129]
+            </div>
+          </div>
+
+          {/* Senior High School */}
+          <div className="academic-subgroup">
+            <h3>Senior High School</h3>
+            <div className="grid-academic-shs">
+              <input type="text" required placeholder="Senior High School Name" /> [cite: 60, 129]
+              <input type="number" min="1900" max="2026" required placeholder="Year" /> [cite: 61, 130]
+              <input type="number" step="0.01" required placeholder="GWA (e.g. 1.25)" /> [cite: 62, 131]
+              <input type="text" className="full-width" required placeholder="School Address" /> [cite: 63, 129]
+            </div>
+          </div>
+        </fieldset>
+
         {/* Section 4: Enrollment Choices */}
         <fieldset>
           <legend>4. Enrollment Choices</legend>
