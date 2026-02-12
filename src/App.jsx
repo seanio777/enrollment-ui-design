@@ -20,54 +20,70 @@ function App() {
 
       <form onSubmit={(e) => { e.preventDefault(); alert("Registration Submitted Successfully!"); }}>
         
-        {/* Section 1: Personal Information */}
+        {/* Section 1: Personal Information Section */}
         <fieldset>
           <legend>1. Personal Information</legend>
+          
+          {/* Name Grid: Requirement 140 - 4 columns for Name */}
           <div className="grid-name">
             <div>
-              <label>First Name</label>
-              <input type="text" required placeholder="First Name" />
+              <label htmlFor="firstName">First Name</label>
+              <input type="text" id="firstName" required placeholder="First Name" />
             </div>
             <div>
-              <label>Middle Name</label>
-              <input type="text" placeholder="Middle Name" />
+              <label htmlFor="middleName">Middle Name</label>
+              <input type="text" id="middleName" placeholder="Middle Name" />
             </div>
             <div>
-              <label>Last Name</label>
-              <input type="text" required placeholder="Last Name" />
+              <label htmlFor="lastName">Last Name</label>
+              <input type="text" id="lastName" required placeholder="Last Name" />
             </div>
             <div>
-              <label>Suffix</label>
-              <input type="text" placeholder="Jr./III" />
+              <label htmlFor="suffix">Suffix</label>
+              <input type="text" id="suffix" placeholder="e.g., Jr., III" />
             </div>
           </div>
 
           <div className="grid-3-col">
+            {/* Date of Birth: Requirement 119 - Click-only calendar */}
             <div>
-              <label>Date of Birth</label>
-              <input type="date" required onKeyDown={(e) => e.preventDefault()} />
+              <label htmlFor="dob">Date of Birth</label>
+              <input 
+                type="date" 
+                id="dob" 
+                required 
+                onKeyDown={(e) => e.preventDefault()} 
+              />
             </div>
+
+            {/* Gender: Requirement 120 - Dropdown */}
             <div>
-              <label>Gender</label>
-              <select required>
-                <option value="">Select Gender</option>
+              <label htmlFor="gender">Gender</label>
+              <select id="gender" required>
+                <option value="">-- Select Gender --</option>
                 <option value="Male">Male</option>
                 <option value="Female">Female</option>
                 <option value="Non-binary">Non-binary</option>
               </select>
             </div>
+
+            {/* Nationality: Requirement 121 - Dropdown */}
             <div>
-              <label>Nationality</label>
-              <select required>
-                <option value="">Select Nationality</option>
+              <label htmlFor="nationality">Nationality</label>
+              <select id="nationality" required>
+                <option value="">-- Select Nationality --</option>
                 <option value="Filipino">Filipino</option>
+                <option value="American">American</option>
+                <option value="Chinese">Chinese</option>
                 <option value="Others">Others</option>
               </select>
             </div>
           </div>
+
+          {/* Religion: Requirement 122 - Boxes */}
           <div>
-            <label>Religion</label>
-            <input type="text" placeholder="Religion" />
+            <label htmlFor="religion">Religion</label>
+            <input type="text" id="religion" required placeholder="Enter Religion" />
           </div>
         </fieldset>
 
