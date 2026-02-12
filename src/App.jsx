@@ -27,19 +27,19 @@ function App() {
         <p>Student Enrollment Portal</p>
       </header>
 
-      <form onSubmit={(e) => { e.preventDefault(); alert("Registration Submitted!"); }}>
+      <form onSubmit={(e) => { e.preventDefault(); alert("Registration Submitted Successfully!"); }}>
         <fieldset>
           <legend>1. Personal Information</legend>
           <div className="grid-name">
-            <div><label>First Name</label><input type="text" required /></div>
+            <div><label className="required">First Name</label><input type="text" required /></div>
             <div><label>Middle Name</label><input type="text" /></div>
-            <div><label>Last Name</label><input type="text" required /></div>
+            <div><label className="required">Last Name</label><input type="text" required /></div>
             <div><label>Suffix</label><input type="text" placeholder="e.g. Jr." /></div>
           </div>
           <div className="grid-3-col">
-            <div><label>Date of Birth</label><input type="date" required /></div>
+            <div><label className="required">Date of Birth</label><input type="date" required /></div>
             <div>
-              <label>Gender</label>
+              <label className="required">Gender</label>
               <select required>
                 <option value="">Select</option>
                 <option value="Male">Male</option>
@@ -47,7 +47,7 @@ function App() {
               </select>
             </div>
             <div>
-              <label>Nationality</label>
+              <label className="required">Nationality</label>
               <select required>
                 <option value="">Select</option>
                 {nationalities.map(n => <option key={n} value={n}>{n}</option>)}
@@ -59,26 +59,26 @@ function App() {
         <fieldset>
           <legend>2. Contact Details</legend>
           <div className="grid-3-col">
-            <div><label>Email</label><input type="email" required /></div>
-            <div><label>Mobile</label><input type="tel" required /></div>
+            <div><label className="required">Email</label><input type="email" required /></div>
+            <div><label className="required">Mobile</label><input type="tel" required /></div>
             <div><label>Landline</label><input type="tel" /></div>
           </div>
           <div className="grid-address">
-            <div className="full-width"><label>Address</label><input type="text" required /></div>
-            <div><label>Barangay</label><input type="text" required /></div>
-            <div><label>City</label><input type="text" required /></div>
-            <div><label>Zip Code</label><input type="text" required /></div>
+            <div className="full-width"><label className="required">Address</label><input type="text" required /></div>
+            <div><label className="required">Barangay</label><input type="text" required /></div>
+            <div><label className="required">City</label><input type="text" required /></div>
+            <div><label className="required">Zip Code</label><input type="text" required /></div>
           </div>
         </fieldset>
 
         <fieldset>
           <legend>3. Academic History</legend>
-          <label>Grade School</label>
+          <label className="required">Grade School</label>
           <div className="academic-grid">
             <input type="text" placeholder="School Name" required />
             <input type="number" placeholder="Year Graduated" required />
           </div>
-          <label>Senior High School</label>
+          <label className="required">Senior High School</label>
           <div className="academic-grid-shs">
             <input type="text" placeholder="School Name" required />
             <input type="number" placeholder="Year Graduated" required />
@@ -90,7 +90,7 @@ function App() {
           <legend>4. Enrollment Choices</legend>
           <div className="grid-3-col">
             <div className="control-group">
-              <label className="main-label">Academic Level</label>
+              <label className="main-label required">Academic Level</label>
               <div className="radio-box">
                 <label className="radio-label">
                   <input type="radio" name="level" value="Undergraduate" checked={academicLevel === "Undergraduate"} onChange={() => {setAcademicLevel("Undergraduate"); setSelectedCollege("");}} required /> Undergraduate
@@ -102,7 +102,7 @@ function App() {
             </div>
 
             <div className="control-group">
-              <label className="main-label">Semester</label>
+              <label className="main-label required">Semester</label>
               <div className="radio-box">
                 <label className="radio-label"><input type="radio" name="sem" value="1st" required /> 1st</label>
                 <label className="radio-label"><input type="radio" name="sem" value="2nd" /> 2nd</label>
@@ -111,7 +111,7 @@ function App() {
             </div>
 
             <div className="control-group">
-              <label className="main-label">Campus</label>
+              <label className="main-label required">Campus</label>
               <div className="radio-box">
                 <label className="radio-label"><input type="radio" name="campus" value="Manila" required /> Manila</label>
                 <label className="radio-label"><input type="radio" name="campus" value="QC" /> QC</label>
@@ -120,7 +120,7 @@ function App() {
           </div>
 
           <div className="dropdown-section">
-            <label className="main-label">College Department</label>
+            <label className="main-label required">College Department</label>
             <select value={selectedCollege} onChange={(e) => setSelectedCollege(e.target.value)} required>
               <option value="">-- Select College --</option>
               {Object.keys(enrollmentData[academicLevel]).map(college => (
@@ -128,7 +128,7 @@ function App() {
               ))}
             </select>
 
-            <label className="main-label">Degree Program</label>
+            <label className="main-label required">Degree Program</label>
             <select required disabled={!selectedCollege}>
               <option value="">-- Select Program --</option>
               {selectedCollege && enrollmentData[academicLevel][selectedCollege].map(prog => (
