@@ -6,14 +6,14 @@ function App() {
   const [selectedCollege, setSelectedCollege] = useState("");
 
   const nationalities = [
-    "Afghan", "Albanian", "Algerian", "American", "Andorran", "Angolan", "Antiguans", "Argentinean", 
+    "Filipino", "Afghan", "Albanian", "Algerian", "American", "Andorran", "Angolan", "Antiguans", "Argentinean", 
     "Armenian", "Australian", "Austrian", "Azerbaijani", "Bahamian", "Bahraini", "Bangladeshi", "Barbadian", 
     "Barbudans", "Batswana", "Belarusian", "Belgian", "Belizean", "Beninese", "Bhutanese", "Bolivian", "Bosnian", 
     "Brazilian", "British", "Bruneian", "Bulgarian", "Burkinabe", "Burmese", "Burundian", "Cambodian", "Cameroonian", 
     "Canadian", "Cape Verdean", "Central African", "Chadian", "Chilean", "Chinese", "Colombian", "Comoran", 
     "Congolese", "Costa Rican", "Croatian", "Cuban", "Cypriot", "Czech", "Danish", "Djibouti", "Dominican", 
     "Dutch", "East Timorese", "Ecuadorean", "Egyptian", "Emirian", "Equatorial Guinean", "Eritrean", "Estonian", 
-    "Ethiopian", "Fijian", "Filipino", "Finnish", "French", "Gabonese", "Gambian", "Georgian", "German", "Ghanaian", "Greek", 
+    "Ethiopian", "Fijian", "Finnish", "French", "Gabonese", "Gambian", "Georgian", "German", "Ghanaian", "Greek", 
     "Grenadian", "Guatemalan", "Guinea-Bissauan", "Guinean", "Guyanese", "Haitian", "Herzegovinian", "Honduran", 
     "Hungarian", "I-Kiribati", "Icelander", "Indian", "Indonesian", "Iranian", "Iraqi", "Irish", "Israeli", 
     "Italian", "Ivorian", "Jamaican", "Japanese", "Jordanian", "Kazakhstani", "Kenyan", "Kittian and Nevisian", 
@@ -44,9 +44,9 @@ function App() {
     }
   };
 
-  const handleSubmit = (e) => {
-    e.preventDefault();
-    alert("Registration Submitted Successfully!");
+  const handleLevelChange = (level) => {
+    setAcademicLevel(level);
+    setSelectedCollege(""); // Reset college when level changes
   };
 
   return (
@@ -56,113 +56,106 @@ function App() {
         <p>Student Enrollment Portal</p>
       </header>
 
-      <form onSubmit={handleSubmit}>
-        {/* Section 1: Personal Information */}
+      <form onSubmit={(e) => { e.preventDefault(); alert("Registration Submitted!"); }}>
+        
         <fieldset>
           <legend>1. Personal Information</legend>
           <div className="grid-name">
-            <div><label>First Name</label><input type="text" required placeholder="First Name" /></div>
-            <div><label>Middle Name</label><input type="text" placeholder="Middle Name" /></div>
-            <div><label>Last Name</label><input type="text" required placeholder="Last Name" /></div>
-            <div><label>Suffix</label><input type="text" placeholder="e.g. Jr/III" /></div>
+            <div><label>First Name</label><input type="text" required /></div>
+            <div><label>Middle Name</label><input type="text" /></div>
+            <div><label>Last Name</label><input type="text" required /></div>
+            <div><label>Suffix</label><input type="text" placeholder="e.g. Jr." /></div>
           </div>
-
           <div className="grid-3-col">
             <div><label>Date of Birth</label><input type="date" required onKeyDown={(e) => e.preventDefault()} /></div>
             <div>
               <label>Gender</label>
               <select required>
-                <option value="">Select Gender</option>
+                <option value="">Select</option>
                 <option value="Male">Male</option>
                 <option value="Female">Female</option>
-                <option value="Non-binary">Non-binary</option>
               </select>
             </div>
             <div>
               <label>Nationality</label>
               <select required>
-                <option value="">-- Select Nationality --</option>
                 {nationalities.map(n => <option key={n} value={n}>{n}</option>)}
               </select>
             </div>
           </div>
-          <div><label>Religion</label><input type="text" required placeholder="Religion" /></div>
         </fieldset>
 
-        {/* Section 2: Contact Details */}
         <fieldset>
-          <legend>2. Contact Details Section</legend>
+          <legend>2. Contact Details</legend>
           <div className="grid-3-col">
-            <div><label>Email Address</label><input type="email" required placeholder="example@email.com" /></div>
-            <div><label>Mobile Number</label><input type="tel" required placeholder="09XXXXXXXXX" /></div>
-            <div><label>Landline</label><input type="tel" placeholder="8XXX-XXXX" /></div>
+            <div><label>Email</label><input type="email" required /></div>
+            <div><label>Mobile</label><input type="tel" required /></div>
+            <div><label>Landline</label><input type="tel" /></div>
           </div>
           <div className="grid-address">
-            <div className="full-width"><label>Street Address</label><input type="text" required placeholder="House No., Street, Subdivision" /></div>
+            <div className="full-width"><label>Address</label><input type="text" required /></div>
             <div><label>Barangay</label><input type="text" required /></div>
             <div><label>City</label><input type="text" required /></div>
-            <div><label>Province</label><input type="text" required /></div>
             <div><label>Zip Code</label><input type="text" required /></div>
           </div>
         </fieldset>
 
-        {/* Section 3: Academic History */}
         <fieldset>
-          <legend>3. Academic History Section</legend>
-          <h3>Grade School</h3>
-          <div className="grid-academic">
-            <input type="text" required placeholder="School Name" />
-            <input type="number" min="1900" max="2026" required placeholder="Year" />
-            <input type="text" className="full-width" required placeholder="School Address" />
+          <legend>3. Academic History</legend>
+          <div className="academic-row">
+            <input type="text" placeholder="Grade School Name" required />
+            <input type="number" placeholder="Year" required />
           </div>
-          <h3>Senior High School</h3>
-          <div className="grid-academic-shs">
-            <input type="text" required placeholder="School Name" />
-            <input type="number" min="1900" max="2026" required placeholder="Year" />
-            <input type="number" step="0.01" required placeholder="GWA" />
-            <input type="text" className="full-width" required placeholder="School Address" />
+          <div className="academic-row">
+            <input type="text" placeholder="Senior High School" required />
+            <input type="number" placeholder="Year" required />
+            <input type="number" step="0.01" placeholder="GWA" required />
           </div>
         </fieldset>
 
-        {/* Section 4: Enrollment Choices */}
         <fieldset>
           <legend>4. Enrollment Choices</legend>
           <div className="grid-3-col">
-            <div className="radio-container">
-              <label>Academic Level</label>
-              <div className="radio-group">
-                <label><input type="radio" name="level" value="Undergraduate" checked={academicLevel === "Undergraduate"} onChange={() => {setAcademicLevel("Undergraduate"); setSelectedCollege("");}} /> Undergrad</label>
-                <label><input type="radio" name="level" value="Graduate" checked={academicLevel === "Graduate"} onChange={() => {setAcademicLevel("Graduate"); setSelectedCollege("");}} /> Graduate</label>
+            <div className="control-group">
+              <label className="main-label">Academic Level</label>
+              <div className="radio-box">
+                <label className="radio-label">
+                  <input type="radio" name="level" value="Undergraduate" checked={academicLevel === "Undergraduate"} onChange={() => handleLevelChange("Undergraduate")} /> Undergraduate
+                </label>
+                <label className="radio-label">
+                  <input type="radio" name="level" value="Graduate" checked={academicLevel === "Graduate"} onChange={() => handleLevelChange("Graduate")} /> Graduate
+                </label>
               </div>
             </div>
-            <div className="radio-container">
-              <label>Semester</label>
-              <div className="radio-group">
-                <label><input type="radio" name="sem" value="1st" required /> 1st</label>
-                <label><input type="radio" name="sem" value="2nd" /> 2nd</label>
+
+            <div className="control-group">
+              <label className="main-label">Semester</label>
+              <div className="radio-box">
+                <label className="radio-label"><input type="radio" name="sem" required /> 1st</label>
+                <label className="radio-label"><input type="radio" name="sem" /> 2nd</label>
+                <label className="radio-label"><input type="radio" name="sem" /> Summer</label>
               </div>
             </div>
-            <div className="radio-container">
-              <label>Campus</label>
-              <div className="radio-group">
-                <label><input type="radio" name="campus" value="Manila" required /> Manila</label>
-                <label><input type="radio" name="campus" value="QC" /> QC</label>
+
+            <div className="control-group">
+              <label className="main-label">Campus</label>
+              <div className="radio-box">
+                <label className="radio-label"><input type="radio" name="campus" required /> Manila</label>
+                <label className="radio-label"><input type="radio" name="campus" /> QC</label>
               </div>
             </div>
           </div>
 
-          <div className="dropdown-group">
-            <label>College Department / Degree Type</label>
+          <div className="dropdown-section">
+            <label className="main-label">College Department</label>
             <select value={selectedCollege} onChange={(e) => setSelectedCollege(e.target.value)} required>
-              <option value="">-- Select --</option>
+              <option value="">-- Select College --</option>
               {Object.keys(enrollmentData[academicLevel]).map(college => (
                 <option key={college} value={college}>{college}</option>
               ))}
             </select>
-          </div>
 
-          <div className="dropdown-group">
-            <label>Degree Program</label>
+            <label className="main-label">Degree Program</label>
             <select required disabled={!selectedCollege}>
               <option value="">-- Select Program --</option>
               {selectedCollege && enrollmentData[academicLevel][selectedCollege].map(prog => (
@@ -172,7 +165,7 @@ function App() {
           </div>
         </fieldset>
 
-        <button type="submit">Submit Registration</button>
+        <button type="submit" className="submit-btn">Submit Registration</button>
       </form>
     </div>
   );
