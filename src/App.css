@@ -41,18 +41,31 @@ legend {
   padding: 0 10px;
 }
 
+/* Grids */
 .grid-name { display: grid; grid-template-columns: repeat(4, 1fr); gap: 15px; }
-.grid-3-col { display: grid; grid-template-columns: repeat(3, 1fr); gap: 15px; }
+.grid-3-col { display: grid; grid-template-columns: repeat(3, 1fr); gap: 15px; margin-bottom: 15px; }
 .grid-address { display: grid; grid-template-columns: 2fr 1fr 1fr 1fr; gap: 10px; }
+.academic-grid { display: grid; grid-template-columns: 3fr 1fr; gap: 10px; margin-bottom: 10px; }
+.academic-grid-shs { display: grid; grid-template-columns: 2fr 1fr 1fr; gap: 10px; margin-bottom: 15px; }
+.full-width { grid-column: 1 / -1; }
 
 label {
   display: block;
   font-weight: 600;
   font-size: 0.85rem;
   margin-bottom: 5px;
+  color: var(--dark-blue);
 }
 
-input[type="text"], input[type="email"], input[type="tel"], input[type="number"], input[type="date"], select {
+/* Ensure labels inside Section 4 are visible */
+.main-label {
+  font-size: 0.9rem;
+  margin-bottom: 8px;
+  color: var(--dark-blue);
+  display: block;
+}
+
+input:not([type="radio"]), select {
   width: 100%;
   padding: 10px;
   background-color: var(--input-bg);
@@ -63,14 +76,20 @@ input[type="text"], input[type="email"], input[type="tel"], input[type="number"]
 }
 
 /* Radio alignment fix */
+.control-group {
+  display: flex;
+  flex-direction: column;
+}
+
 .radio-box {
   display: flex;
   flex-direction: column;
   gap: 10px;
-  padding: 15px;
+  padding: 12px;
   border: 1px solid var(--border-gray);
   border-radius: 6px;
   background-color: #fdfdfd;
+  height: 100%; /* Ensures all 3 boxes are same height */
 }
 
 .radio-label {
@@ -80,6 +99,7 @@ input[type="text"], input[type="email"], input[type="tel"], input[type="number"]
   font-weight: normal;
   color: #333;
   cursor: pointer;
+  margin-bottom: 0;
 }
 
 .radio-label input[type="radio"] {
