@@ -47,28 +47,27 @@ function App() {
 
   return (
     <div className="container">
-      <div className="glass-effect"></div>
       <header>
         <div className="logo-badge">ADEi</div>
         <h2>University Portal</h2>
-        <p>Official Student Enrollment</p>
+        <p>Student Enrollment System</p>
       </header>
 
       <form onSubmit={(e) => { e.preventDefault(); alert("Registration Submitted Successfully!"); }}>
         <fieldset>
-          <legend>1. Personal Profile</legend>
+          <legend>1. Personal Information</legend>
           <div className="grid-name">
             <div className="input-group"><label className="required">First Name</label><input type="text" placeholder="First Name" required /></div>
             <div className="input-group"><label>Middle Name</label><input type="text" placeholder="Middle Name" /></div>
             <div className="input-group"><label className="required">Last Name</label><input type="text" placeholder="Last Name" required /></div>
-            <div className="input-group"><label>Suffix</label><input type="text" placeholder="Suffix" /></div>
+            <div className="input-group"><label>Suffix</label><input type="text" placeholder="e.g. Jr." /></div>
           </div>
           <div className="grid-3-col">
             <div className="input-group"><label className="required">Date of Birth</label><input type="date" required /></div>
             <div className="input-group">
               <label className="required">Gender</label>
               <select required>
-                <option value="">Select Gender</option>
+                <option value="">Select</option>
                 <option value="Male">Male</option>
                 <option value="Female">Female</option>
                 <option value="Non-binary">Non-binary</option>
@@ -85,47 +84,85 @@ function App() {
         </fieldset>
 
         <fieldset>
-          <legend>2. Contact & Residence</legend>
+          <legend>2. Contact Details</legend>
           <div className="grid-3-col">
             <div className="input-group">
-              <label className="required">Email</label>
-              <input type="email" placeholder="email@univ.edu.ph" required />
+              <label className="required">Email Address</label>
+              <input type="email" placeholder="name@example.com" required />
             </div>
             <div className="input-group">
-              <label className="required">Mobile</label>
-              <input type="tel" value={mobile} onChange={handleMobileChange} placeholder="+63 9XX" required />
+              <label className="required">Mobile Number</label>
+              <input type="tel" value={mobile} onChange={handleMobileChange} placeholder="+63 9XX-XXX-XXXX" required />
             </div>
             <div className="input-group">
               <label>Landline</label>
-              <input type="tel" value={landline} onChange={handleLandlineChange} placeholder="(02) 8XXX" />
+              <input type="tel" value={landline} onChange={handleLandlineChange} placeholder="(02) 8XXX-XXXX" />
             </div>
           </div>
           <div className="grid-address-detailed">
-            <div className="full-width"><label className="required">Street Address</label><input type="text" required /></div>
-            <div className="input-group"><label className="required">Barangay</label><input type="text" required /></div>
-            <div className="input-group"><label className="required">City</label><input type="text" required /></div>
-            <div className="input-group"><label className="required">Province</label><input type="text" required /></div>
-            <div className="input-group"><label className="required">Zip</label><input type="text" maxLength="4" required /></div>
+            <div className="full-width"><label className="required">Street Address</label><input type="text" placeholder="House No. / Street" required /></div>
+            <div className="input-group"><label className="required">Barangay</label><input type="text" placeholder="Barangay" required /></div>
+            <div className="input-group"><label className="required">City</label><input type="text" placeholder="City" required /></div>
+            <div className="input-group"><label className="required">Province</label><input type="text" placeholder="Province" required /></div>
+            <div className="input-group"><label className="required">Zip Code</label><input type="text" maxLength="4" placeholder="Zip" required /></div>
           </div>
         </fieldset>
 
         <fieldset>
-          <legend>3. Enrollment Setup</legend>
+          <legend>3. Academic History</legend>
+          <div className="academic-group">
+            <label className="required">Grade School</label>
+            <div className="academic-row">
+              <input type="text" placeholder="School Name" required />
+              <input type="number" placeholder="Year" required />
+            </div>
+            <input type="text" placeholder="School Address" required />
+          </div>
+
+          <div className="academic-group">
+            <label className="required">Junior High School</label>
+            <div className="academic-row">
+              <input type="text" placeholder="School Name" required />
+              <input type="number" placeholder="Year" required />
+            </div>
+            <input type="text" placeholder="School Address" required />
+          </div>
+
+          <div className="academic-group">
+            <label className="required">Senior High School</label>
+            <div className="academic-row-shs">
+              <input type="text" placeholder="School Name" required />
+              <input type="number" placeholder="Year" required />
+              <input type="number" step="0.01" placeholder="GWA" required />
+            </div>
+            <input type="text" placeholder="School Address" required />
+          </div>
+        </fieldset>
+
+        <fieldset>
+          <legend>4. Enrollment Choices</legend>
           <div className="grid-3-col">
             <div className="input-group">
-              <label className="main-label required">Level</label>
+              <label className="main-label required">Academic Level</label>
               <div className="radio-box">
-                <label className="radio-label"><input type="radio" name="level" checked={academicLevel === "Undergraduate"} onChange={() => {setAcademicLevel("Undergraduate"); setSelectedCollege("");}} required /> Undergraduate</label>
-                <label className="radio-label"><input type="radio" name="level" checked={academicLevel === "Graduate"} onChange={() => {setAcademicLevel("Graduate"); setSelectedCollege("");}} /> Graduate</label>
+                <label className="radio-label">
+                  <input type="radio" name="level" checked={academicLevel === "Undergraduate"} onChange={() => {setAcademicLevel("Undergraduate"); setSelectedCollege("");}} required /> Undergraduate
+                </label>
+                <label className="radio-label">
+                  <input type="radio" name="level" checked={academicLevel === "Graduate"} onChange={() => {setAcademicLevel("Graduate"); setSelectedCollege("");}} /> Graduate
+                </label>
               </div>
             </div>
+
             <div className="input-group">
-              <label className="main-label required">Term</label>
+              <label className="main-label required">Semester</label>
               <div className="radio-box">
                 <label className="radio-label"><input type="radio" name="sem" required /> 1st Sem</label>
                 <label className="radio-label"><input type="radio" name="sem" /> 2nd Sem</label>
+                <label className="radio-label"><input type="radio" name="sem" /> Summer</label>
               </div>
             </div>
+
             <div className="input-group">
               <label className="main-label required">Campus</label>
               <div className="radio-box">
@@ -134,20 +171,22 @@ function App() {
               </div>
             </div>
           </div>
+
           <div className="dropdown-section">
             <div className="input-group">
-              <label className="required">College</label>
+              <label className="required">College Department</label>
               <select value={selectedCollege} onChange={(e) => setSelectedCollege(e.target.value)} required>
-                <option value="">-- Choose College --</option>
+                <option value="">-- Select College --</option>
                 {Object.keys(enrollmentData[academicLevel]).map(college => (
                   <option key={college} value={college}>{college}</option>
                 ))}
               </select>
             </div>
+
             <div className="input-group">
-              <label className="required">Program</label>
+              <label className="required">Degree Program</label>
               <select required disabled={!selectedCollege}>
-                <option value="">-- Choose Program --</option>
+                <option value="">-- Select Program --</option>
                 {selectedCollege && enrollmentData[academicLevel][selectedCollege].map(prog => (
                   <option key={prog} value={prog}>{prog}</option>
                 ))}
@@ -156,7 +195,7 @@ function App() {
           </div>
         </fieldset>
 
-        <button type="submit" className="submit-btn">Verify and Submit Application</button>
+        <button type="submit" className="submit-btn">Complete Registration</button>
       </form>
     </div>
   );
