@@ -65,14 +65,40 @@ function App() {
       <form onSubmit={(e) => { e.preventDefault(); alert("Registration Submitted Successfully!"); }}>
         <fieldset>
           <legend>1. Personal Information</legend>
+
           <div className="grid-name">
-            <div className="input-group"><label className="required">First Name</label><input type="text" placeholder="First Name" required /></div>
-            <div className="input-group"><label>Middle Name</label><input type="text" placeholder="Middle Name" /></div>
-            <div className="input-group"><label className="required">Last Name</label><input type="text" placeholder="Last Name" required /></div>
-            <div className="input-group"><label>Suffix</label><input type="text" placeholder="e.g. Jr." /></div>
+            <div className="input-group">
+              <label className="required">First Name</label>
+              <input type="text" placeholder="First Name" required />
+            </div>
+
+            <div className="input-group">
+              <label>Middle Name</label>
+              <input type="text" placeholder="Middle Name" />
+            </div>
+
+            <div className="input-group">
+              <label className="required">Last Name</label>
+              <input type="text" placeholder="Last Name" required />
+            </div>
+
+            <div className="input-group">
+              <label>Suffix</label>
+              <input type="text" placeholder="e.g. Jr." />
+            </div>
+
+            <div className="input-group">
+              <label>Religion</label>
+              <input type="text" placeholder="Religion" />
+            </div>
           </div>
+
           <div className="grid-3-col">
-            <div className="input-group"><label className="required">Date of Birth</label><input type="date" required /></div>
+            <div className="input-group">
+              <label className="required">Date of Birth</label>
+              <input type="date" required />
+            </div>
+
             <div className="input-group">
               <label className="required">Gender</label>
               <select required>
@@ -82,6 +108,7 @@ function App() {
                 <option value="Non-binary">Non-binary</option>
               </select>
             </div>
+
             <div className="input-group">
               <label className="required">Nationality</label>
               <select required>
