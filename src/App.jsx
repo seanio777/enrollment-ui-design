@@ -88,8 +88,8 @@ function App() {
             </div>
 
             <div className="input-group">
-              <label>Religion</label>
-              <input type="text" placeholder="Religion" />
+              <label className="required">Religion</label>
+              <input type="text" placeholder="Religion" required />
             </div>
           </div>
 
@@ -140,7 +140,7 @@ function App() {
             <div className="input-group"><label className="required">Barangay</label><input type="text" placeholder="Barangay" required /></div>
             <div className="input-group"><label className="required">City</label><input type="text" placeholder="City" required /></div>
             <div className="input-group"><label className="required">Province</label><input type="text" placeholder="Province" required /></div>
-            <div className="input-group"><label className="required">Zip Code</label><input type="text" maxLength="4" pattern="\d{4}" placeholder="Zip" required /></div>
+            <div className="input-group"><label className="required">Zip Code</label><input type="text" min="1000" max="9999" inputMode="numeric" maxLength="4" pattern="\d{4}" placeholder="Zip" required onInput={(e) => {e.target.value = e.target.value.replace(/\D/g, '');}}/></div>
           </div>
         </fieldset>
 
