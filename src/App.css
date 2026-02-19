@@ -169,3 +169,8 @@ input:required:valid, select:required:valid { border-left: 5px solid var(--succe
   }
   body { align-items: flex-start; }
 }
+
+input[type="date"]::-webkit-calendar-picker-indicator {
+  filter: invert(1); /* make the calendar icon visible */
+  cursor: pointer;
+}
