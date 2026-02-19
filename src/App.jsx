@@ -7,35 +7,25 @@ function App() {
   const [mobile, setMobile] = useState("");
   const [landline, setLandline] = useState("");
 
-  // Mobile Mask: +63 XXX-XXX-XXXX
   const handleMobileChange = (e) => {
     let value = e.target.value.replace(/\D/g, ''); 
     if (value.startsWith('63')) value = value.substring(2);
-    
     let formatted = "+63 ";
     if (value.length > 0) formatted += value.substring(0, 3);
     if (value.length >= 4) formatted += '-' + value.substring(3, 6);
     if (value.length >= 7) formatted += '-' + value.substring(6, 10);
-    
     setMobile(formatted.trim());
   };
 
-  // Landline Mask: (02) 8XXX-XXXX
   const handleLandlineChange = (e) => {
     let value = e.target.value.replace(/\D/g, '');
     let formatted = "";
-    
     if (value.length > 0) {
       const areaCode = value.substring(0, 2);
       const mainNumber = value.substring(2);
-      
       formatted = `(${areaCode})`;
-      if (mainNumber.length > 0) {
-        formatted += ` ${mainNumber.substring(0, 4)}`;
-      }
-      if (mainNumber.length >= 5) {
-        formatted += `-${mainNumber.substring(4, 8)}`;
-      }
+      if (mainNumber.length > 0) formatted += ` ${mainNumber.substring(0, 4)}`;
+      if (mainNumber.length >= 5) formatted += `-${mainNumber.substring(4, 8)}`;
     }
     setLandline(formatted);
   };
@@ -58,8 +48,9 @@ function App() {
   return (
     <div className="container">
       <header>
-        <h2>ADEi University</h2>
-        <p>Student Enrollment Portal</p>
+        <div className="logo-badge">ADEi</div>
+        <h2>University Portal</h2>
+        <p>Student Enrollment System</p>
       </header>
 
       <form onSubmit={(e) => { e.preventDefault(); alert("Registration Submitted Successfully!"); }}>
@@ -97,15 +88,15 @@ function App() {
           <div className="grid-3-col">
             <div className="input-group">
               <label className="required">Email Address</label>
-              <input type="email" placeholder="name@example.com" pattern="[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,4}$" required />
+              <input type="email" placeholder="name@example.com" required />
             </div>
             <div className="input-group">
               <label className="required">Mobile Number</label>
-              <input type="tel" value={mobile} onChange={handleMobileChange} placeholder="+63 9XX-XXX-XXXX" pattern="^\+63 \d{3}-\d{3}-\d{4}$" required />
+              <input type="tel" value={mobile} onChange={handleMobileChange} placeholder="+63 9XX-XXX-XXXX" required />
             </div>
             <div className="input-group">
               <label>Landline</label>
-              <input type="tel" value={landline} onChange={handleLandlineChange} placeholder="(02) 8XXX-XXXX" pattern="\(\d{2}\) \d{4}-\d{4}" />
+              <input type="tel" value={landline} onChange={handleLandlineChange} placeholder="(02) 8XXX-XXXX" />
             </div>
           </div>
           <div className="grid-address-detailed">
@@ -113,7 +104,7 @@ function App() {
             <div className="input-group"><label className="required">Barangay</label><input type="text" placeholder="Barangay" required /></div>
             <div className="input-group"><label className="required">City</label><input type="text" placeholder="City" required /></div>
             <div className="input-group"><label className="required">Province</label><input type="text" placeholder="Province" required /></div>
-            <div className="input-group"><label className="required">Zip Code</label><input type="text" maxLength="4" pattern="\d{4}" placeholder="Zip" required /></div>
+            <div className="input-group"><label className="required">Zip Code</label><input type="text" maxLength="4" placeholder="Zip" required /></div>
           </div>
         </fieldset>
 
@@ -123,7 +114,7 @@ function App() {
             <label className="required">Grade School</label>
             <div className="academic-row">
               <input type="text" placeholder="School Name" required />
-              <input type="number" placeholder="Year" min="1900" max="2026" required />
+              <input type="number" placeholder="Year" required />
             </div>
             <input type="text" placeholder="School Address" required />
           </div>
@@ -132,7 +123,7 @@ function App() {
             <label className="required">Junior High School</label>
             <div className="academic-row">
               <input type="text" placeholder="School Name" required />
-              <input type="number" placeholder="Year" min="1900" max="2026" required />
+              <input type="number" placeholder="Year" required />
             </div>
             <input type="text" placeholder="School Address" required />
           </div>
@@ -141,7 +132,7 @@ function App() {
             <label className="required">Senior High School</label>
             <div className="academic-row-shs">
               <input type="text" placeholder="School Name" required />
-              <input type="number" placeholder="Year" min="1900" max="2026" required />
+              <input type="number" placeholder="Year" required />
               <input type="number" step="0.01" placeholder="GWA" required />
             </div>
             <input type="text" placeholder="School Address" required />
@@ -155,10 +146,10 @@ function App() {
               <label className="main-label required">Academic Level</label>
               <div className="radio-box">
                 <label className="radio-label">
-                  <input type="radio" name="level" value="Undergraduate" checked={academicLevel === "Undergraduate"} onChange={() => {setAcademicLevel("Undergraduate"); setSelectedCollege("");}} required /> Undergraduate
+                  <input type="radio" name="level" checked={academicLevel === "Undergraduate"} onChange={() => {setAcademicLevel("Undergraduate"); setSelectedCollege("");}} required /> Undergraduate
                 </label>
                 <label className="radio-label">
-                  <input type="radio" name="level" value="Graduate" checked={academicLevel === "Graduate"} onChange={() => {setAcademicLevel("Graduate"); setSelectedCollege("");}} /> Graduate
+                  <input type="radio" name="level" checked={academicLevel === "Graduate"} onChange={() => {setAcademicLevel("Graduate"); setSelectedCollege("");}} /> Graduate
                 </label>
               </div>
             </div>
@@ -166,17 +157,17 @@ function App() {
             <div className="input-group">
               <label className="main-label required">Semester</label>
               <div className="radio-box">
-                <label className="radio-label"><input type="radio" name="sem" value="1st" required /> 1st Sem</label>
-                <label className="radio-label"><input type="radio" name="sem" value="2nd" /> 2nd Sem</label>
-                <label className="radio-label"><input type="radio" name="sem" value="Summer" /> Summer</label>
+                <label className="radio-label"><input type="radio" name="sem" required /> 1st Sem</label>
+                <label className="radio-label"><input type="radio" name="sem" /> 2nd Sem</label>
+                <label className="radio-label"><input type="radio" name="sem" /> Summer</label>
               </div>
             </div>
 
             <div className="input-group">
               <label className="main-label required">Campus</label>
               <div className="radio-box">
-                <label className="radio-label"><input type="radio" name="campus" value="Manila" required /> Manila</label>
-                <label className="radio-label"><input type="radio" name="campus" value="QC" /> QC</label>
+                <label className="radio-label"><input type="radio" name="campus" required /> Manila</label>
+                <label className="radio-label"><input type="radio" name="campus" /> QC</label>
               </div>
             </div>
           </div>
